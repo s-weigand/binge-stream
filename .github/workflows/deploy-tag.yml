@@ -1,0 +1,74 @@
+# Copied from https://github.com/notlmn/browser-extension-template/blob/master/.github/workflows/deployment.yml
+name: Deployment
+
+on:
+  schedule:
+    - cron: '31 13 * * 3'
+  push:
+    tags:
+      - '20.*'
+      - '21.*'
+      - '22.*'
+      - '23.*'
+      - '24.*'
+
+jobs:
+  Build:
+    outputs:
+      created: ${{ steps.daily-version.outputs.created }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run test:prod # This includes the build
+      - uses: fregante/daily-version-action@v1
+        name: Create tag if necessary
+        id: daily-version
+      - name: Update extension’s meta
+        env:
+          VER: ${{ steps.daily-version.outputs.version }}
+        run: |
+          echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
+          npm run version
+      - name: Upload chrome build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: built-extension-chrome
+          path: distribution
+
+      - name: update Manifest for FireFox
+        run: npm run update_manifest_firefox
+
+      - name: Upload firefox build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: built-extension-firefox
+          path: distribution
+
+  deploy-to-chrome:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: built-extension-chrome
+          path: distribution
+      - run: cd distribution && npx chrome-webstore-upload-cli upload --auto-publish
+        env:
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+
+  deploy-to-firefox:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: built-extension-firefox
+          path: distribution
+      - run: cd distribution && npx web-ext-submit
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}

@@ -1,0 +1,30 @@
+{
+  "extends": ["tslint-config-standard", "tslint-config-prettier", "tslint:latest"],
+  "rules": {
+    "jsx-wrap-multiline": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "objects": "always"
+        },
+        "singleline": "never"
+      }
+    ],
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single", "jsx-single", "avoid-escape"],
+    "variable-name": [true, "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "max-classes-per-file": [false, 1],
+    "interface-name": [true, "never-prefix"],
+    "no-submodule-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-first",
+        "named-imports-order": "lowercase-last"
+      }
+    ],
+    "no-object-literal-type-assertion": false,
+    "jsx-no-lambda": false
+  }
+}

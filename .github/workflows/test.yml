@@ -1,0 +1,22 @@
+name: Test
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run test:prod
+      - name: Upload dist bundle
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-build
+          path: distribution
+      - name: Codecov Upload
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/lcov.info

@@ -1,0 +1,52 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    // general editor style
+    "eamodio.gitlens",
+    "vscode-icons-team.vscode-icons",
+    "gerane.theme-flatlandmonokai",
+    "editorconfig.editorconfig",
+    "CoenraadS.bracket-pair-colorizer-2",
+    "emilast.LogFileHighlighter",
+    "timonwong.shellcheck",
+    "oderwat.indent-rainbow",
+    "aaron-bond.better-comments",
+    "ryu1kn.partial-diff",
+    "rubymaniac.vscode-paste-and-indent",
+    "igorsbitnev.error-gutters",
+    "ryanluker.vscode-coverage-gutters",
+    "visualstudioexptteam.vscodeintellicode",
+    "rssowl.copy-relative-path-posix",
+    // Multi lingual spallchecker
+    "streetsidesoftware.code-spell-checker",
+    // doc generation mainly
+    "lextudio.restructuredtext",
+    // sass, scss
+    "stylelint.vscode-stylelint",
+    "mrmlnc.vscode-scss",
+    "syler.sass-indented",
+    "pranaygp.vscode-css-peek",
+    "Janne252.fontawesome-autocomplete",
+    "anseki.vscode-color",
+    "naumovs.color-highlight",
+    // html
+    "formulahendry.auto-rename-tag",
+    "hwencc.html-tag-wrapper",
+    "Zignd.html-css-class-completion",
+    "vincaslt.highlight-matching-tag",
+    // ts, js, json related stuff
+    "wix.vscode-import-cost",
+    "nickdemayo.vscode-json-editor",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "loiane.ts-extension-pack",
+    "salbert.comment-ts",
+    "stringham.move-ts",
+    "wallabyjs.quokka-vscode",
+    // dev tools
+    "msjsdiag.debugger-for-chrome",
+    "ritwickdey.liveserver"
+  ]
+}

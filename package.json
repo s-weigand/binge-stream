@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "tslint -t codeFrame -c tslint.json 'source/**/*.{ts,tsx,js}' 'tests/**/*.{ts,tsx,js}'",
+    "test": "jest --coverage",
+    "test:prod": "run-s test lint build",
+    "clean": "rimraf distribution",
+    "build": "run-s clean && webpack --mode=production",
+    "watch": "webpack --mode=development --watch",
+    "version": "dot-json distribution/manifest.json version $VER",
+    "release": "VER=$(daily-version); git tag -a \"$VER\" -m \"Release version $VER\"",
+    "update_manifest_firefox": "npx ts-node tools/firefox_manifest_append.ts"
+  },
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "^0.7.0",
+    "@types/firefox-webext-browser": "^78.0.1",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.10",
+    "chrome-webstore-upload-cli": "^1.2.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "daily-version": "^2.0.0",
+    "dot-json": "^1.2.1",
+    "file-loader": "^6.1.1",
+    "jest": "^26.5.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
+    "size-plugin": "^2.0.1",
+    "terser-webpack-plugin": "^4.2.3",
+    "ts-jest": "^26.4.1",
+    "ts-loader": "^8.0.5",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^9.0.0",
+    "typescript": "^3.9.7",
+    "web-ext": "^5.2.0",
+    "web-ext-submit": "^5.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.0.0"
+  },
+  "dependencies": {
+    "webext-options-sync": "^2.0.0",
+    "webextension-polyfill-ts": "^0.20.0"
+  }
+}
