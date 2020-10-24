@@ -8,10 +8,10 @@ optionsStorage
       clickElementOnAdd('.atvwebplayersdk-skipelement-button')
     }
     if (response['amazon-skip-intro'] === true) {
-      clickElementOnAdd('.atvwebplayersdk-skipelement-button')
+      clickElementOnAdd('.atvwebplayersdk-infobar-container')
     }
     if (response['amazon-skip-ad'] === true) {
-      clickElementOnAdd('.adSkipButton')
+      clickElementOnAdd('.atvwebplayersdk-infobar-container.show > div > div > div:nth-child(2)')
     }
   })
   .catch((error) => {

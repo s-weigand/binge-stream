@@ -2,6 +2,10 @@ html {
   min-width: 550px;
   overflow-x: hidden; /* Required to hide horizontal scroll on Firefox */
 }
+form {
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+}
 
 h3 img {
   height: 1.2em;

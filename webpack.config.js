@@ -10,8 +10,7 @@ module.exports = {
     // target_path/target_file_name: full_source_path
     'background/background': './source/background/background.ts',
     'options/options': ['./source/options/options.ts', './source/options/options.scss'],
-    'actions/option_action/add_option_action':
-      './source/actions/option_action/add_option_action.ts',
+    // 'browser_action/options': ['./source/options/options.ts', './source/options/options.scss'],
     // content scripts
     'content_scripts/netflix': ['./source/content_scripts/netflix.ts'],
     'content_scripts/amazon': ['./source/content_scripts/amazon.ts'],
@@ -68,6 +67,14 @@ module.exports = {
             ignore: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.scss'],
           },
         },
+        // {
+        //   from: './source/options/options.html',
+        //   to: './browser_action/options.html',
+        // },
+        // {
+        //   from: './distribution/options/options.css',
+        //   to: './browser_action/options.css',
+        // },
       ],
     }),
   ],

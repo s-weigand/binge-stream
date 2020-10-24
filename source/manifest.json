@@ -19,8 +19,8 @@
     "default_icon": {
       "64": "icon.png"
     },
-    "default_popup": "actions/option_action/add_option_action.html",
-    "default_title": "my Options addon"
+    "default_popup": "options/options.html",
+    "default_title": "Binge-Stream Options"
   },
   "content_scripts": [
     {

@@ -6,7 +6,7 @@
     "test:prod": "run-s test lint build",
     "clean": "rimraf distribution",
     "build": "run-s clean && webpack --mode=production",
-    "watch": "webpack --mode=development --watch",
+    "watch": "run-s clean && webpack --mode=development --watch",
     "version": "dot-json distribution/manifest.json version $VER",
     "release": "VER=$(daily-version); git tag -a \"$VER\" -m \"Release version $VER\"",
     "update_manifest_firefox": "npx ts-node tools/firefox_manifest_append.ts"
