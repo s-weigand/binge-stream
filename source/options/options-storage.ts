@@ -2,11 +2,11 @@ import OptionsSync from 'webext-options-sync'
 
 export default new OptionsSync({
   defaults: {
-    colorRed: 244,
-    colorGreen: 67,
-    colorBlue: 54,
-    username: 'default_user',
-    password: '123',
+    'netflix-skip-recap': true,
+    'netflix-skip-intro': true,
+    'amazon-skip-recap': true,
+    'amazon-skip-intro': true,
+    'amazon-skip-ad': true,
   },
   migrations: [OptionsSync.migrations.removeUnused],
   logging: true,

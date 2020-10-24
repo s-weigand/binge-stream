@@ -5,35 +5,34 @@
 <link rel="stylesheet" href="options.css" />
 
 <form id="options-form" class="detail-view-container">
-  <h3>Color Previewer</h3>
-  <div class="color-picker">
-    <div class="color-inputs">
-      <label class="color-input">
-        <span>R</span>
-        <input type="range" min="0" max="255" name="colorRed" />
-        <input type="number" name="colorRed" min="0" max="255" />
-      </label>
-      <label class="color-input">
-        <span>G</span>
-        <input type="range" min="0" max="255" name="colorGreen" />
-        <input type="number" name="colorGreen" min="0" max="255" />
-      </label>
-      <label class="color-input">
-        <span>B</span>
-        <input type="range" min="0" max="255" name="colorBlue" />
-        <input type="number" name="colorBlue" min="0" max="255" />
-      </label>
-      <label>
-        <span>Username: </span>
-        <input name="username" />
-      </label>
-      <label>
-        <span>Password: </span>
-        <input name="password" />
-      </label>
-    </div>
-    <div class="color-output"></div>
-  </div>
+  <h3>
+    <img src="https://image.flaticon.com/icons/png/512/732/732228.png" alt="netflix logo" />
+    Netflix
+  </h3>
+  <p>
+    <input type="checkbox" name="netflix-skip-recap" />
+    <label for="netflix-skip-recap">Skip Recap</label>
+  </p>
+  <p>
+    <input type="checkbox" name="netflix-skip-intro" />
+    <label for="netflix-skip-intro">Skip Intro</label>
+  </p>
+  <h3>
+    <img src="http://pngimg.com/uploads/amazon/amazon_PNG5.png" alt="amazon logo" />
+    Amazon Video
+  </h3>
+  <p>
+    <input type="checkbox" name="amazon-skip-recap" />
+    <label for="amazon-skip-recap">Skip Recap</label>
+  </p>
+  <p>
+    <input type="checkbox" name="amazon-skip-intro" />
+    <label for="amazon-skip-intro">Skip Intro</label>
+  </p>
+  <p>
+    <input type="checkbox" name="amazon-skip-ad" />
+    <label for="amazon-skip-ad">Skip Ad</label>
+  </p>
 </form>
 
 <script src="options.js"></script>

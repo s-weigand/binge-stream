@@ -12,7 +12,7 @@ const updateManifestFireFox = () => {
   const fireFoxSpecifficSettings = {
     browser_specific_settings: {
       gecko: {
-        id: '<your_addon_id_here>',
+        id: 'binge-stream@s-weigand',
         strict_min_version: '67.0',
       },
     },

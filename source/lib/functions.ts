@@ -1,20 +1,10 @@
-import { browser } from 'webextension-polyfill-ts'
+import { observe } from 'selector-observer'
 
-export const openInIncognitoWindow = (url: string): void => {
-  browser.windows.create({ incognito: true, url }).catch(() => {
-    alert(`Unable to open ${url}`)
+export const clickElementOnAdd = (selector: string) => {
+  observe(selector, {
+    add(el) {
+      console.log('triggered mutation for: ', selector)
+      ;(el as HTMLElement).click()
+    },
   })
-}
-
-export const addUl = (listItems: number[], id = 'option-list') => {
-  const itemList = document.createElement('ul')
-  itemList.id = id
-
-  for (const listItem of listItems) {
-    const listElement = document.createElement('li')
-    listElement.textContent = `${listItem}`
-    itemList.appendChild(listElement)
-  }
-
-  document.body.appendChild(itemList)
 }

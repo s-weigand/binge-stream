@@ -10,10 +10,11 @@ module.exports = {
     // target_path/target_file_name: full_source_path
     'background/background': './source/background/background.ts',
     'options/options': ['./source/options/options.ts', './source/options/options.scss'],
-    'context_menue/context_menue_entry': './source/context_menue/context_menue_entry.ts',
-    'sidebar/sidebar': './source/sidebar/sidebar.ts',
     'actions/option_action/add_option_action':
       './source/actions/option_action/add_option_action.ts',
+    // content scripts
+    'content_scripts/netflix': ['./source/content_scripts/netflix.ts'],
+    'content_scripts/amazon': ['./source/content_scripts/amazon.ts'],
   },
   output: {
     path: path.join(__dirname, 'distribution'),
