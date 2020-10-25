@@ -14,11 +14,11 @@ Extension to auto click 'Skip Recap' and 'Skip Intro' on streaming pages, when t
 ## Install
 
 [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/binge-stream
-[link-cws]: https://chrome.google.com/webstore/detail/binge-stream/<extension_ID_CHROME>
+[link-cws]: https://chrome.google.com/webstore/detail/binge-stream/heoccpcipeedednknenbgenacjomlcbp
 
 - [<img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Google_Chrome_icon_%282011%29.svg" width=16>
   **Chrome** extension
-  <img valign="middle" src="https://img.shields.io/chrome-web-store/v/<extension_ID_CHROME>.svg?label=%20">
+  <img valign="middle" src="https://img.shields.io/chrome-web-store/v/heoccpcipeedednknenbgenacjomlcbp.svg?label=%20">
   ][link-cws]
 - [<img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg" width=16>
   **Firefox** add-on
