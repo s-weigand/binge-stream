@@ -4,9 +4,12 @@
 <img src="https://raw.githubusercontent.com/s-weigand/binge-stream/main/assets/icon.svg" width=400/>
 </h1>
 
-Extension to auto click 'Skip Recap' and 'Skip Intro' on streaming pages, when they pop up.
+## Why would you want to use this extension?
 
-# Supported services
+You sat down on your couch or went to bed, binge watching your favorite show and then the intro kicks in for the 10th- time this evening so you get up and click the skip button?
+Than this extension is for you.
+
+## Supported services
 
 - Netflix
 - Amazon Video
