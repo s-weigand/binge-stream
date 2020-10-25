@@ -5,20 +5,47 @@ html {
 form {
   padding-left: 0.5rem;
   padding-right: 1rem;
-}
 
-h3 img {
-  height: 1.2em;
-  vertical-align: middle;
-  margin: 0.2em;
-}
-p {
-  margin-left: 2rem;
+  > h3 {
+    display: none;
+  }
+
+  h3 img {
+    height: 1.2em;
+    vertical-align: middle;
+    margin: 0.2em;
+  }
+  p {
+    margin-left: 2rem;
+  }
 }
 
 input {
   margin-left: 0.5rem;
   vertical-align: middle;
+}
+
+form.page-action {
+  > h3 {
+    display: unset;
+  }
+  div[data-section-name] {
+    display: none;
+    h3 {
+      display: none;
+    }
+    &.current {
+      display: block;
+    }
+  }
+  &.not-supported {
+    div[data-section-name] {
+      display: block;
+      h3 {
+        display: block;
+      }
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {

@@ -13,7 +13,13 @@
     ],
     "semicolon": [true, "never"],
     "quotemark": [true, "single", "jsx-single", "avoid-escape"],
-    "variable-name": [true, "check-format", "allow-pascal-case", "allow-leading-underscore"],
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-pascal-case",
+      "allow-leading-underscore",
+      "allow-snake-case"
+    ],
     "max-classes-per-file": [false, 1],
     "interface-name": [true, "never-prefix"],
     "no-submodule-imports": false,

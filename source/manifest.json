@@ -14,7 +14,7 @@
   "icons": {
     "128": "icon.png"
   },
-  "permissions": ["storage"],
+  "permissions": ["activeTab", "storage"],
   "browser_action": {
     "default_icon": {
       "64": "icon.png"
@@ -25,12 +25,12 @@
   "content_scripts": [
     {
       "js": ["content_scripts/netflix.js"],
-      "matches": ["*://netflix.com/watch/*", "*://*.netflix.com/watch/*"]
+      "matches": ["*://netflix.com/watch/**", "*://*.netflix.com/watch/**"]
     },
     {
       "js": ["content_scripts/amazon.js"],
       "matches": ["*://*/*"],
-      "include_globs": ["*://amazon.*/gp/video/*", "*://*.amazon.*/gp/video/*"]
+      "include_globs": ["*://amazon.*/gp/video/**", "*://*.amazon.*/gp/video/**"]
     }
   ],
   "options_ui": {

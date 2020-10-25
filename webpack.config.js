@@ -8,9 +8,7 @@ module.exports = {
   stats: 'errors-only',
   entry: {
     // target_path/target_file_name: full_source_path
-    'background/background': './source/background/background.ts',
     'options/options': ['./source/options/options.ts', './source/options/options.scss'],
-    // 'browser_action/options': ['./source/options/options.ts', './source/options/options.scss'],
     // content scripts
     'content_scripts/netflix': ['./source/content_scripts/netflix.ts'],
     'content_scripts/amazon': ['./source/content_scripts/amazon.ts'],
