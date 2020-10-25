@@ -1,4 +1,8 @@
-# binge-stream
+# Binge-Stream
+
+<h1 align="center">
+<img src="https://raw.githubusercontent.com/s-weigand/binge-stream/main/assets/icon.svg" width=400/>
+</h1>
 
 Extension to auto click 'Skip Recap' and 'Skip Intro' on streaming pages, when they pop up.
 
