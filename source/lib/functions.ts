@@ -2,7 +2,7 @@ import minimatch from 'minimatch'
 import { observe } from 'selector-observer'
 
 export const urlPatterns = {
-  netflix: ['*://netflix.com/watch/**', '*://*.netflix.com/watch/**'],
+  netflix: ['*://netflix.com/**', '*://*.netflix.com/**'],
   amazon: ['*://amazon.*/gp/video/**', '*://*.amazon.*/gp/video/**'],
 }
 
