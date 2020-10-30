@@ -19,7 +19,7 @@
   "content_scripts": [
     {
       "js": ["content_scripts/netflix.js"],
-      "matches": ["*://netflix.com/watch/**", "*://*.netflix.com/watch/**"]
+      "matches": ["*://netflix.com/**", "*://*.netflix.com/**"]
     },
     {
       "js": ["content_scripts/amazon.js"],
