@@ -3,7 +3,12 @@ import { observe } from 'selector-observer'
 
 export const urlPatterns = {
   netflix: ['*://netflix.com/**', '*://*.netflix.com/**'],
-  amazon: ['*://amazon.*/gp/video/**', '*://*.amazon.*/gp/video/**'],
+  amazon: [
+    '*://amazon.*/gp/video/**',
+    '*://*.amazon.*/gp/video/**',
+    '*://amazon.*/*/dp/**',
+    '*://*.amazon.*/*/dp/**',
+  ],
 }
 
 export const clickElementOnAdd = (selector: string) => {

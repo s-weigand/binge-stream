@@ -24,7 +24,12 @@
     {
       "js": ["content_scripts/amazon.js"],
       "matches": ["*://*/*"],
-      "include_globs": ["*://amazon.*/gp/video/**", "*://*.amazon.*/gp/video/**"]
+      "include_globs": [
+        "*://amazon.*/gp/video/**",
+        "*://*.amazon.*/gp/video/**",
+        "*://amazon.*/*/dp/**",
+        "*://*.amazon.*/*/dp/**"
+      ]
     }
   ],
   "options_ui": {

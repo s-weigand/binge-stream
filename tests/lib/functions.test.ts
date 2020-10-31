@@ -50,6 +50,7 @@ describe('Functions', () => {
       ['https://amazon.com/gp/video/detail/ABC123/', 'amazon', 'amazon'],
       ['https://www.amazon.de/gp/video/detail/ABC123/', 'amazon', 'amazon'],
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'amazon', 'amazon'],
+      ['https://www.amazon.de/Staffel-1-Official-Trailer/dp/B083SSJ9F6/', 'amazon', 'amazon'],
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'netflix', undefined],
     ])('url: %s', (url, patternName, expected) => {
       expect(getUrlKey(url, patternName as keyof typeof urlPatterns)).toBe(expected)
