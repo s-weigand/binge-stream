@@ -12,18 +12,17 @@ export const urlPatterns = {
 }
 const BingeStreamObservers: Observer[] = []
 
-export const textInArray = (text: string, filterArray: string[]) => {
+export const textInArray = (text: string | undefined, filterArray: string[]) => {
   const filteredArray = filterArray.filter((element, _index, _array) => {
-    return text.toLowerCase() === element.toLowerCase()
+    if (typeof text === 'string') {
+      return text.toLowerCase() === element.toLowerCase()
+    }
+    return false
   })
   return filteredArray.length !== 0
 }
 
 export const clickElementOnAdd = (selector: string, filterArray: string[] | null = null) => {
-  // if ((window as any).BingeStreamObservers !== undefined) {
-  //   // tslint:disable-next-line
-  //   ;(window as any).BingeStreamObservers = []
-  // }
   const clickObserver = observe(selector, {
     add(el) {
       console.log('triggered mutation for: ', selector)
@@ -40,14 +39,10 @@ export const clickElementOnAdd = (selector: string, filterArray: string[] | null
     },
   })
   BingeStreamObservers.push(clickObserver)
-  // // tslint:disable-next-line
-  // ;(window as any).BingeStreamObservers.push(clickObserver)
 }
 
 export const deleteObservers = () => {
-  // while ((window as any).BingeStreamObservers.length) {
   while (BingeStreamObservers.length) {
-    // const clickObserver: Observer = (window as any).BingeStreamObservers.pop()
     const clickObserver = BingeStreamObservers.pop() as Observer
     console.log('removing Observer', clickObserver)
     clickObserver.abort()

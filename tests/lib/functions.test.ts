@@ -4,6 +4,7 @@
 import fs from 'fs'
 import {
   clickElementOnAdd,
+  deleteObservers,
   getPatternNames,
   getUrlKey,
   manipulateOptionPage,
@@ -31,6 +32,7 @@ describe('Functions', () => {
       ['Skip Recap', ['skip recap'], true],
       ['skip recap', ['skip intro'], false],
       ['skip recap', [], false],
+      [undefined, ['skip intro'], false],
     ])('text: %s', (text, filterArray, expected) => {
       expect(textInArray(text, filterArray)).toBe(expected)
     })
@@ -69,6 +71,37 @@ describe('Functions', () => {
     expect(callbackMock).not.toHaveBeenCalled()
     clickElementOnAdd('#dummy', ['testText'])
     document.body.appendChild(elementToAdd)
+  })
+  it('deleteObservers', async (done) => {
+    console.log = () => undefined
+    const callbackMock = jest.fn()
+    const clickFunc1 = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).not.toHaveBeenCalled()
+      done()
+    }
+    const clickFunc2 = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).toHaveBeenCalledTimes(1)
+      done()
+    }
+    const elementToAdd = document.createElement('button')
+    elementToAdd.id = 'dummy'
+    elementToAdd.onclick = clickFunc1
+    expect(callbackMock).not.toHaveBeenCalled()
+    clickElementOnAdd('#dummy')
+    deleteObservers()
+    document.body.appendChild(elementToAdd)
+
+    const elementToAdd2 = document.createElement('button')
+    elementToAdd2.id = 'dummy2'
+    elementToAdd2.onclick = clickFunc2
+    clickElementOnAdd('#dummy2')
+    document.body.appendChild(elementToAdd2)
   })
   describe('getUrlKey', () => {
     it.each([
