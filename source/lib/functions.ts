@@ -1,5 +1,5 @@
 import minimatch from 'minimatch'
-import { observe } from 'selector-observer'
+import { Observer, observe } from 'selector-observer'
 
 export const urlPatterns = {
   netflix: ['*://netflix.com/**', '*://*.netflix.com/**'],
@@ -10,6 +10,7 @@ export const urlPatterns = {
     '*://*.amazon.*/*/dp/**',
   ],
 }
+const BingeStreamObservers: Observer[] = []
 
 export const textInArray = (text: string, filterArray: string[]) => {
   const filteredArray = filterArray.filter((element, _index, _array) => {
@@ -19,7 +20,11 @@ export const textInArray = (text: string, filterArray: string[]) => {
 }
 
 export const clickElementOnAdd = (selector: string, filterArray: string[] | null = null) => {
-  observe(selector, {
+  // if ((window as any).BingeStreamObservers !== undefined) {
+  //   // tslint:disable-next-line
+  //   ;(window as any).BingeStreamObservers = []
+  // }
+  const clickObserver = observe(selector, {
     add(el) {
       console.log('triggered mutation for: ', selector)
       if (filterArray === null) {
@@ -34,6 +39,19 @@ export const clickElementOnAdd = (selector: string, filterArray: string[] | null
       }
     },
   })
+  BingeStreamObservers.push(clickObserver)
+  // // tslint:disable-next-line
+  // ;(window as any).BingeStreamObservers.push(clickObserver)
+}
+
+export const deleteObservers = () => {
+  // while ((window as any).BingeStreamObservers.length) {
+  while (BingeStreamObservers.length) {
+    // const clickObserver: Observer = (window as any).BingeStreamObservers.pop()
+    const clickObserver = BingeStreamObservers.pop() as Observer
+    console.log('removing Observer', clickObserver)
+    clickObserver.abort()
+  }
 }
 
 export const getUrlKey = (
