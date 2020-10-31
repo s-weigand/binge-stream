@@ -4,9 +4,11 @@
 import fs from 'fs'
 import {
   clickElementOnAdd,
+  deleteObservers,
   getPatternNames,
   getUrlKey,
   manipulateOptionPage,
+  textInArray,
   urlPatterns,
 } from '../../source/lib/functions'
 
@@ -23,6 +25,18 @@ const hasClasses = (selector: string, classes: string[]): boolean | void => {
 }
 
 describe('Functions', () => {
+  describe('textInArray', () => {
+    it.each([
+      ['skip recap', ['skip recap'], true],
+      ['skip recap', ['Skip Recap'], true],
+      ['Skip Recap', ['skip recap'], true],
+      ['skip recap', ['skip intro'], false],
+      ['skip recap', [], false],
+      [undefined, ['skip intro'], false],
+    ])('text: %s', (text, filterArray, expected) => {
+      expect(textInArray(text, filterArray)).toBe(expected)
+    })
+  })
   it('clickElementOnAdd', async (done) => {
     console.log = () => undefined
     const callbackMock = jest.fn()
@@ -40,6 +54,55 @@ describe('Functions', () => {
     clickElementOnAdd('#dummy')
     document.body.appendChild(elementToAdd)
   })
+  it('clickElementOnAdd with Text compare', async (done) => {
+    console.log = () => undefined
+    const callbackMock = jest.fn()
+    const clickFunc = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).toHaveBeenCalled()
+      done()
+    }
+    const elementToAdd = document.createElement('button')
+    elementToAdd.id = 'dummy'
+    elementToAdd.innerText = 'testText'
+    elementToAdd.onclick = clickFunc
+    expect(callbackMock).not.toHaveBeenCalled()
+    clickElementOnAdd('#dummy', ['testText'])
+    document.body.appendChild(elementToAdd)
+  })
+  it('deleteObservers', async (done) => {
+    console.log = () => undefined
+    const callbackMock = jest.fn()
+    const clickFunc1 = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).not.toHaveBeenCalled()
+      done()
+    }
+    const clickFunc2 = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).toHaveBeenCalledTimes(1)
+      done()
+    }
+    const elementToAdd = document.createElement('button')
+    elementToAdd.id = 'dummy'
+    elementToAdd.onclick = clickFunc1
+    expect(callbackMock).not.toHaveBeenCalled()
+    clickElementOnAdd('#dummy')
+    deleteObservers()
+    document.body.appendChild(elementToAdd)
+
+    const elementToAdd2 = document.createElement('button')
+    elementToAdd2.id = 'dummy2'
+    elementToAdd2.onclick = clickFunc2
+    clickElementOnAdd('#dummy2')
+    document.body.appendChild(elementToAdd2)
+  })
   describe('getUrlKey', () => {
     it.each([
       ['https://www.netflix.com/watch/12345', 'netflix', 'netflix'],
@@ -50,6 +113,7 @@ describe('Functions', () => {
       ['https://amazon.com/gp/video/detail/ABC123/', 'amazon', 'amazon'],
       ['https://www.amazon.de/gp/video/detail/ABC123/', 'amazon', 'amazon'],
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'amazon', 'amazon'],
+      ['https://www.amazon.de/Staffel-1-Official-Trailer/dp/B083SSJ9F6/', 'amazon', 'amazon'],
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'netflix', undefined],
     ])('url: %s', (url, patternName, expected) => {
       expect(getUrlKey(url, patternName as keyof typeof urlPatterns)).toBe(expected)
