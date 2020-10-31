@@ -7,6 +7,7 @@ import {
   getPatternNames,
   getUrlKey,
   manipulateOptionPage,
+  textInArray,
   urlPatterns,
 } from '../../source/lib/functions'
 
@@ -23,6 +24,17 @@ const hasClasses = (selector: string, classes: string[]): boolean | void => {
 }
 
 describe('Functions', () => {
+  describe('textInArray', () => {
+    it.each([
+      ['skip recap', ['skip recap'], true],
+      ['skip recap', ['Skip Recap'], true],
+      ['Skip Recap', ['skip recap'], true],
+      ['skip recap', ['skip intro'], false],
+      ['skip recap', [], false],
+    ])('text: %s', (text, filterArray, expected) => {
+      expect(textInArray(text, filterArray)).toBe(expected)
+    })
+  })
   it('clickElementOnAdd', async (done) => {
     console.log = () => undefined
     const callbackMock = jest.fn()
@@ -38,6 +50,24 @@ describe('Functions', () => {
     elementToAdd.onclick = clickFunc
     expect(callbackMock).not.toHaveBeenCalled()
     clickElementOnAdd('#dummy')
+    document.body.appendChild(elementToAdd)
+  })
+  it('clickElementOnAdd with Text compare', async (done) => {
+    console.log = () => undefined
+    const callbackMock = jest.fn()
+    const clickFunc = (_event: any) => {
+      // it looks strange but if callbackMock is called it
+      // will properly result in an error
+      callbackMock()
+      expect(callbackMock).toHaveBeenCalled()
+      done()
+    }
+    const elementToAdd = document.createElement('button')
+    elementToAdd.id = 'dummy'
+    elementToAdd.innerText = 'testText'
+    elementToAdd.onclick = clickFunc
+    expect(callbackMock).not.toHaveBeenCalled()
+    clickElementOnAdd('#dummy', ['testText'])
     document.body.appendChild(elementToAdd)
   })
   describe('getUrlKey', () => {

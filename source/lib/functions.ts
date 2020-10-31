@@ -11,12 +11,27 @@ export const urlPatterns = {
   ],
 }
 
-export const clickElementOnAdd = (selector: string) => {
+export const textInArray = (text: string, filterArray: string[]) => {
+  const filteredArray = filterArray.filter((element, _index, _array) => {
+    return text.toLowerCase() === element.toLowerCase()
+  })
+  return filteredArray.length !== 0
+}
+
+export const clickElementOnAdd = (selector: string, filterArray: string[] | null = null) => {
   observe(selector, {
     add(el) {
       console.log('triggered mutation for: ', selector)
-      // tslint:disable-next-line
-      ;(el as HTMLElement).click()
+      if (filterArray === null) {
+        // tslint:disable-next-line
+        ;(el as HTMLElement).click()
+      } else {
+        const elementText = (el as HTMLElement).innerText
+        if (textInArray(elementText, filterArray)) {
+          // tslint:disable-next-line
+          ;(el as HTMLElement).click()
+        }
+      }
     },
   })
 }
