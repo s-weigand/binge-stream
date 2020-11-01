@@ -6,11 +6,11 @@
 
 ## :question: Why would you want to use this extension?
 
-You sat down on your couch or went to bed, binge watching your favorite show and then the intro kicks in for the 10th- time this evening so you get up and click the skip button?
+You sat down on your couch or went to bed, binge-watching your favorite show, and then the intro kicks in for the 10th time this evening so you get up and click the skip button?
 
 Or you don't want to watch the 5min recap of an episode you just watched?
 
-Than this extension is for you.
+Then this extension is for you.
 
 ## :sparkles: Supported services
 
@@ -40,7 +40,7 @@ This limitation **DOES NOT** apply if you check `skip intro` **AND** `skip recap
 
 So why not just use google translate to get all locals?
 
-As can be seen for the `DE` locals for [amazon](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/amazon.ts) and [netflix](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/netflix.ts), it isn't quite that easy.
-Since the locals are hand crafted, so is the requirement for the checking.
+As can be seen for the `DE` locals for [Amazon](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/amazon.ts) and [Netflix](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/netflix.ts), it isn't quite that easy.
+Since the locals are handcrafted, so is the requirement for the checking.
 
-If you local is missing free to file an issue or make a PR. :smile:
+If your local is missing feel free to file an issue or make a PullRequest. :smile:
