@@ -15,9 +15,9 @@ Then this extension is for you.
 ## :sparkles: Supported services
 
 - Netflix
-  - Supported Locals (`DE`, `EN`)
+  - Supported Locale (`DE`, `EN`)
 - Amazon Video
-  - Supported Locals (`DE`, `EN`)
+  - Supported Locale (`DE`, `EN`)
 
 ## :rocket: Installation
 
@@ -41,6 +41,6 @@ This limitation **DOES NOT** apply if you check `skip intro` **AND** `skip recap
 So why not just use google translate to get all locals?
 
 As can be seen for the `DE` locals for [Amazon](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/amazon.ts) and [Netflix](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/netflix.ts), it isn't quite that easy.
-Since the locals are handcrafted, so is the requirement for the checking.
+Since the locale is handcrafted, so is the requirement for the checking.
 
-If your local is missing feel free to file an issue or make a PullRequest. :smile:
+If your locale is missing feel free to file an issue or make a PullRequest. :smile:

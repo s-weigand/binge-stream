@@ -23,17 +23,27 @@ export const textInArray = (text: string | undefined, filterArray: string[]) => 
 }
 
 export const clickElementOnAdd = (selector: string, filterArray: string[] | null = null) => {
+  const clickCallback = (el: HTMLElement) => {
+    el.click()
+  }
+  actionOnAdd(clickCallback, selector, filterArray)
+}
+
+export const actionOnAdd = (
+  actionCallback: (el: HTMLElement) => void,
+  selector: string,
+  filterArray: string[] | null = null,
+) => {
   const clickObserver = observe(selector, {
     add(el) {
       console.log('triggered mutation for: ', selector)
+      console.log('el', el)
       if (filterArray === null) {
-        // tslint:disable-next-line
-        ;(el as HTMLElement).click()
+        actionCallback(el as HTMLElement)
       } else {
         const elementText = (el as HTMLElement).innerText
         if (textInArray(elementText, filterArray)) {
-          // tslint:disable-next-line
-          ;(el as HTMLElement).click()
+          actionCallback(el as HTMLElement)
         }
       }
     },
