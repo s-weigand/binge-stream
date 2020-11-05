@@ -31,6 +31,7 @@
     "anseki.vscode-color",
     "naumovs.color-highlight",
     // html
+    "ecmel.vscode-html-css",
     "formulahendry.auto-rename-tag",
     "hwencc.html-tag-wrapper",
     "Zignd.html-css-class-completion",
