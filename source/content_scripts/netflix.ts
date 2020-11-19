@@ -25,11 +25,11 @@ const init = () => {
     .then((response) => {
       deleteObservers()
       if (response['netflix-skip-recap'] === true && response['netflix-skip-intro'] === true) {
-        keyboardShortcutOnAdd('.watch-video--skip-content-button')
+        keyboardShortcutOnAdd('.skip-credits')
       } else if (response['netflix-skip-recap'] === true) {
-        keyboardShortcutOnAdd('.watch-video--skip-content-button', skipRecapLocal)
+        keyboardShortcutOnAdd('.skip-credits', skipRecapLocal)
       } else if (response['netflix-skip-intro'] === true) {
-        keyboardShortcutOnAdd('.watch-video--skip-content-button', skipIntroLocal)
+        keyboardShortcutOnAdd('.skip-credits', skipIntroLocal)
       }
     })
     .catch((error) => {
