@@ -23,7 +23,9 @@ const init = () => {
         clickElementOnAdd('.atvwebplayersdk-skipelement-button', skipIntroLocal)
       }
       if (response['amazon-skip-ad'] === true) {
-        clickElementOnAdd('.atvwebplayersdk-infobar-container.show > div > div > div:nth-child(2)')
+        clickElementOnAdd(
+          '.atvwebplayersdk-infobar-container.show > div > div:nth-child(3) > div:nth-child(2)',
+        )
       }
     })
     .catch((error) => {
