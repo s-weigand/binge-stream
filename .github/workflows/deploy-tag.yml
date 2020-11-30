@@ -14,7 +14,8 @@ on:
       - '24.*'
 
 jobs:
-  Build:
+  build:
+    name: Build
     outputs:
       created: ${{ steps.daily-version.outputs.created }}
     runs-on: ubuntu-latest
@@ -47,6 +48,7 @@ jobs:
           path: distribution
 
   deploy-to-chrome:
+    name: Deploy Chrome Store
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -62,6 +64,7 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 
   deploy-to-firefox:
+    name: Deploy Mozilla Addons
     needs: build
     runs-on: ubuntu-latest
     steps:
