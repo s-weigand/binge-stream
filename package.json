@@ -35,7 +35,7 @@
     "@types/firefox-webext-browser": "^82.0.0",
     "@types/jest": "^26.0.16",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "chrome-webstore-upload-cli": "^1.2.0",
     "copy-webpack-plugin": "^6.3.2",
     "daily-version": "^2.0.0",
