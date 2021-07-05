@@ -64,6 +64,6 @@
     "minimatch": "^3.0.4",
     "selector-observer": "^2.1.6",
     "webext-options-sync": "^2.0.1",
-    "webextension-polyfill-ts": "^0.25.0"
+    "webextension-polyfill-ts": "^0.26.0"
   }
 }
