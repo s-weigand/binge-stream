@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@sindresorhus/tsconfig": "^0.8.0",
-    "@types/firefox-webext-browser": "^82.0.0",
+    "@types/firefox-webext-browser": "^82.0.1",
     "@types/jest": "^26.0.24",
     "@types/minimatch": "^3.0.5",
     "@types/node": "^16.4.1",
