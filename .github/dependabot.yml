@@ -1,8 +1,10 @@
 version: 2
 updates:
-- package-ecosystem: npm
+# Maintain dependencies for GitHub Actions
+- package-ecosystem: "github-actions"
   directory: "/"
   schedule:
-    interval: weekly
-    time: "04:00"
-  open-pull-requests-limit: 10
+    interval: "weekly"
+    day: friday
+    time: "18:00"
+    timezone: Europe/Amsterdam
