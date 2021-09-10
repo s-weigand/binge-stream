@@ -7,5 +7,10 @@
     "moduleResolution": "node",
     "esModuleInterop": true
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": ["source/**/*"]
 }
