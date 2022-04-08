@@ -28,7 +28,7 @@ jobs:
       - name: "Test build step: update Manifest for FireFox"
         run: npm run update_manifest_firefox
       - name: Upload dist bundle
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: test-build
           path: distribution
