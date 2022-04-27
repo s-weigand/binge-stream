@@ -17,7 +17,7 @@ Then this extension is for you.
 - Netflix
   - Supported Locale (`DE`, `EN`)
 - Amazon Video
-  - Supported Locale (`DE`, `EN`)
+  - Supported Locale (`All` not locale dependent)
 
 ## :rocket: Installation
 
