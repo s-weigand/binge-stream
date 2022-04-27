@@ -22,7 +22,7 @@ Then this extension is for you.
 
 ## :rocket: Installation
 
-[link-amo]: https://addons.mozilla.org/en-US/firefox/addon/binge-stream
+[link-amo]: https://addons.mozilla.org/firefox/addon/binge-stream
 [link-cws]: https://chrome.google.com/webstore/detail/binge-stream/heoccpcipeedednknenbgenacjomlcbp
 
 - [<img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Google_Chrome_icon_%282011%29.svg" width=16>
@@ -39,12 +39,12 @@ Due to the way the pages are structured, the only way to differentiate between `
 
 This limitation **DOES NOT** apply if you check `skip intro` **AND** `skip recap` :yum:
 
-So why not just use google translate to get all locals?
+So why not just use Google translate to get all locals?
 
 As can be seen for the `DE` locals for [Amazon](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/amazon.ts) and [Netflix](https://github.com/s-weigand/binge-stream/blob/main/source/content_scripts/netflix.ts), it isn't quite that easy.
 Since the locale is handcrafted, so is the requirement for the checking.
 
-If your locale is missing feel free to file an issue or make a PullRequest. :smile:
+If your locale is missing, feel free to file an issue or make a Pull Request. :smile:
 
 ## Contributors ✨
 
