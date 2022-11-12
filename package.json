@@ -62,7 +62,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
-    "minimatch": "^3.0.4",
+    "minimatch": "^3.0.5",
     "selector-observer": "^2.1.6",
     "webext-options-sync": "^2.0.1",
     "webextension-polyfill-ts": "^0.26.0"
