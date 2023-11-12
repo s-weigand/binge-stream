@@ -12,6 +12,7 @@ module.exports = {
     // content scripts
     'content_scripts/netflix': ['./source/content_scripts/netflix.ts'],
     'content_scripts/amazon': ['./source/content_scripts/amazon.ts'],
+    'content_scripts/youtube': ['./source/content_scripts/youtube.ts'],
   },
   output: {
     path: path.join(__dirname, 'distribution'),

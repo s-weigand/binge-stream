@@ -15,9 +15,11 @@ Then this extension is for you.
 
 ## :sparkles: Supported services
 
-- Netflix
+- <img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" width=16> Netflix
   - Supported Locale (`DE`, `EN`)
-- Amazon Video
+- <img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Amazon_icon.png" width=16> Amazon Video
+  - Supported Locale (`All` not locale dependent)
+- <img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" width=16> Youtube
   - Supported Locale (`All` not locale dependent)
 
 ## :rocket: Installation
@@ -25,7 +27,7 @@ Then this extension is for you.
 [link-amo]: https://addons.mozilla.org/firefox/addon/binge-stream
 [link-cws]: https://chrome.google.com/webstore/detail/binge-stream/heoccpcipeedednknenbgenacjomlcbp
 
-- [<img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Google_Chrome_icon_%282011%29.svg" width=16>
+- [<img valign="center" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Google_Chrome_icon_%28March_2011%29.svg" width=16>
   **Chrome** extension
   <img valign="middle" src="https://img.shields.io/chrome-web-store/v/heoccpcipeedednknenbgenacjomlcbp.svg?label=%20">
   ][link-cws]

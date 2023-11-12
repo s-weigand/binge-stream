@@ -8,7 +8,10 @@
   "icons": {
     "128": "icon.png"
   },
-  "permissions": ["activeTab", "storage"],
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
   "browser_action": {
     "default_icon": {
       "128": "icon.png"
@@ -18,17 +21,34 @@
   },
   "content_scripts": [
     {
-      "js": ["content_scripts/netflix.js"],
-      "matches": ["*://netflix.com/**", "*://*.netflix.com/**"]
+      "js": [
+        "content_scripts/netflix.js"
+      ],
+      "matches": [
+        "*://netflix.com/**",
+        "*://*.netflix.com/**"
+      ]
     },
     {
-      "js": ["content_scripts/amazon.js"],
-      "matches": ["*://*/*"],
+      "js": [
+        "content_scripts/amazon.js"
+      ],
+      "matches": [
+        "*://*/*"
+      ],
       "include_globs": [
         "*://amazon.*/gp/video/**",
         "*://*.amazon.*/gp/video/**",
         "*://amazon.*/*/dp/**",
         "*://*.amazon.*/*/dp/**"
+      ]
+    },
+    {
+      "js": [
+        "content_scripts/youtube.js"
+      ],
+      "matches": [
+        "*://www.youtube.com/**"
       ]
     }
   ],

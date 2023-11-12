@@ -7,6 +7,7 @@ export default new OptionsSync({
     'amazon-skip-recap': true,
     'amazon-skip-intro': true,
     'amazon-skip-ad': true,
+    'youtube-skip-ad': true,
   },
   migrations: [OptionsSync.migrations.removeUnused],
   logging: true,

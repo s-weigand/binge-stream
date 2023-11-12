@@ -115,17 +115,18 @@ describe('Functions', () => {
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'amazon', 'amazon'],
       ['https://www.amazon.de/Staffel-1-Official-Trailer/dp/B083SSJ9F6/', 'amazon', 'amazon'],
       ['https://smile.amazon.de/gp/video/detail/ABC123/', 'netflix', undefined],
+      ['https://www.youtube.com/watch?v=ABC', 'youtube', 'youtube'],
     ])('url: %s', (url, patternName, expected) => {
       expect(getUrlKey(url, patternName as keyof typeof urlPatterns)).toBe(expected)
     })
   })
   it('manifest has same patterns', () => {
     const manifestString = fs.readFileSync('./source/manifest.json', 'utf8')
-    const content_scripts = JSON.parse(manifestString).content_scripts
+    const { content_scripts } = JSON.parse(manifestString)
     const globMatchers = []
     for (const content_script of content_scripts) {
       globMatchers.push(content_script.matches)
-      const include_globs = content_script.include_globs
+      const { include_globs } = content_script
       if (include_globs !== undefined) {
         globMatchers.push(include_globs)
       }
@@ -140,7 +141,7 @@ describe('Functions', () => {
   it('getPatternNames', () => {
     const optionPageSource = fs.readFileSync('./source/options/options.html', 'utf8')
     document.body.outerHTML = optionPageSource
-    expect(getPatternNames()).toEqual(['netflix', 'amazon'])
+    expect(getPatternNames()).toEqual(['netflix', 'amazon', 'youtube'])
   })
   describe('manipulateOptionPage', () => {
     beforeEach(() => {
@@ -153,6 +154,7 @@ describe('Functions', () => {
       expect(hasClasses('form', ['detail-view-container'])).toBe(true)
       expect(hasClasses('div[data-section-name="netflix"]', ['current'])).toBe(false)
       expect(hasClasses('div[data-section-name="amazon"]', ['current'])).toBe(false)
+      expect(hasClasses('div[data-section-name="youtube"]', ['current'])).toBe(false)
     })
 
     it.each([
@@ -167,16 +169,19 @@ describe('Functions', () => {
       )
       expect(hasClasses('div[data-section-name="netflix"]', ['current'])).toBe(false)
       expect(hasClasses('div[data-section-name="amazon"]', ['current'])).toBe(false)
+      expect(hasClasses('div[data-section-name="youtube"]', ['current'])).toBe(false)
     })
 
     it.each([
-      ['https://www.netflix.com/watch/12345', true, false],
-      ['https://amazon.de/gp/video/detail/ABC123/', false, true],
-    ])('supported pages: %s', (url, netflix, amazon) => {
+      ['https://www.netflix.com/watch/12345', true, false, false],
+      ['https://amazon.de/gp/video/detail/ABC123/', false, true, false],
+      ['https://www.youtube.com/watch?v=ABC', false, false, true],
+    ])('supported pages: %s', (url, netflix, amazon, youtube) => {
       manipulateOptionPage(url)
       expect(hasClasses('form', ['detail-view-container', 'page-action'])).toBe(true)
       expect(hasClasses('div[data-section-name="netflix"]', ['current'])).toBe(netflix)
       expect(hasClasses('div[data-section-name="amazon"]', ['current'])).toBe(amazon)
+      expect(hasClasses('div[data-section-name="youtube"]', ['current'])).toBe(youtube)
     })
   })
 })
