@@ -1,5 +1,5 @@
 html {
-  min-width: 550px;
+  min-width: 15rem;
   overflow-x: hidden; /* Required to hide horizontal scroll on Firefox */
 }
 form {
@@ -52,5 +52,9 @@ form.page-action {
   body {
     background-color: #424242;
     color: #fcfcfc;
+    h3 {
+        color: #fcfcfc;
+        font-weight: bold;
+      }
   }
 }

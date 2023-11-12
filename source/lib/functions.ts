@@ -9,6 +9,7 @@ export const urlPatterns = {
     '*://amazon.*/*/dp/**',
     '*://*.amazon.*/*/dp/**',
   ],
+  youtube: ['*://www.youtube.com/**'],
 }
 const BingeStreamObservers: Observer[] = []
 
