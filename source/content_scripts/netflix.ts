@@ -11,12 +11,12 @@ export const skipRecapLocal = [
 ]
 
 const keyboardShortcutOnAdd = (selector: string, filterArray: string[] | null = null) => {
-  const skipKeyboardShurtcut = (el: HTMLElement) => {
+  const skipKeyboardShortcut = (el: HTMLElement) => {
     // @ts-ignore
     const pressKey = new KeyboardEvent('keydown', { key: 's', keyCode: 83, bubbles: true })
     el.dispatchEvent(pressKey)
   }
-  actionOnAdd(skipKeyboardShurtcut, selector, filterArray)
+  actionOnAdd(skipKeyboardShortcut, selector, filterArray)
 }
 
 const init = () => {

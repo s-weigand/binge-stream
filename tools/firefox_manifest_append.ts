@@ -9,7 +9,7 @@ const updateManifestFireFox = () => {
 
   const originalManifest = JSON.parse(fs.readFileSync(distManifestPath, 'utf8'))
 
-  const fireFoxSpecifficSettings = {
+  const fireFoxSpecificSettings = {
     browser_specific_settings: {
       gecko: {
         id: 'binge-stream@s-weigand',
@@ -17,7 +17,7 @@ const updateManifestFireFox = () => {
       },
     },
   }
-  const updatedManifest = { ...originalManifest, ...fireFoxSpecifficSettings }
+  const updatedManifest = { ...originalManifest, ...fireFoxSpecificSettings }
   fs.writeFileSync(distManifestPath, JSON.stringify(updatedManifest))
 }
 
