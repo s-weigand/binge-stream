@@ -4,7 +4,7 @@
   "description": "Extension to auto click 'Skip Recap' and 'Skip Intro' on streaming pages, when they pop up",
   "homepage_url": "https://github.com/s-weigand/binge-stream",
   "manifest_version": 3,
-  "minimum_chrome_version": "74",
+  "minimum_chrome_version": "99",
   "icons": {
     "128": "icon.png"
   },
