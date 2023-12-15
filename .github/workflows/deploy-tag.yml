@@ -33,7 +33,7 @@ jobs:
           echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
           npm run version
       - name: Upload chrome build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: built-extension-chrome
           path: distribution
@@ -42,7 +42,7 @@ jobs:
         run: npm run update_manifest_firefox
 
       - name: Upload firefox build artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: built-extension-firefox
           path: distribution
