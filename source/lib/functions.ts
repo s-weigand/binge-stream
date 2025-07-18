@@ -1,34 +1,34 @@
-import minimatch from 'minimatch'
-import { Observer, observe } from 'selector-observer'
+import minimatch from "minimatch";
+import { type Observer, observe } from "selector-observer";
 
 export const urlPatterns = {
-  netflix: ['*://netflix.com/**', '*://*.netflix.com/**'],
+  netflix: ["*://netflix.com/**", "*://*.netflix.com/**"],
   amazon: [
-    '*://amazon.*/gp/video/**',
-    '*://*.amazon.*/gp/video/**',
-    '*://amazon.*/*/dp/**',
-    '*://*.amazon.*/*/dp/**',
+    "*://amazon.*/gp/video/**",
+    "*://*.amazon.*/gp/video/**",
+    "*://amazon.*/*/dp/**",
+    "*://*.amazon.*/*/dp/**",
   ],
-  youtube: ['*://www.youtube.com/**'],
-}
-const BingeStreamObservers: Observer[] = []
+  youtube: ["*://www.youtube.com/**"],
+};
+const BingeStreamObservers: Observer[] = [];
 
 export const textInArray = (text: string | undefined, filterArray: string[]) => {
+  if (text === undefined) {
+    return false;
+  }
   const filteredArray = filterArray.filter((element, _index, _array) => {
-    if (typeof text === 'string') {
-      return text.toLowerCase() === element.toLowerCase()
-    }
-    return false
-  })
-  return filteredArray.length !== 0
-}
+    return text.toLowerCase() === element.toLowerCase();
+  });
+  return filteredArray.length !== 0;
+};
 
 export const clickElementOnAdd = (selector: string, filterArray: string[] | null = null) => {
   const clickCallback = (el: HTMLElement) => {
-    el.click()
-  }
-  actionOnAdd(clickCallback, selector, filterArray)
-}
+    el.click();
+  };
+  actionOnAdd(clickCallback, selector, filterArray);
+};
 
 export const actionOnAdd = (
   actionCallback: (el: HTMLElement) => void,
@@ -37,65 +37,68 @@ export const actionOnAdd = (
 ) => {
   const clickObserver = observe(selector, {
     add(el) {
-      console.log('triggered mutation for: ', selector)
-      console.log('el', el)
+      console.log("triggered mutation for: ", selector);
+      console.log("el", el);
       if (filterArray === null) {
-        actionCallback(el as HTMLElement)
+        actionCallback(el as HTMLElement);
       } else {
-        const elementText = (el as HTMLElement).innerText
+        console.log("filterArray", filterArray);
+        const elementText = (el as HTMLElement).innerText;
+        console.log("elementText", elementText);
         if (textInArray(elementText, filterArray)) {
-          actionCallback(el as HTMLElement)
+          actionCallback(el as HTMLElement);
         }
       }
     },
-  })
-  BingeStreamObservers.push(clickObserver)
-}
+  });
+  BingeStreamObservers.push(clickObserver);
+};
 
 export const deleteObservers = () => {
   while (BingeStreamObservers.length) {
-    const clickObserver = BingeStreamObservers.pop() as Observer
-    console.log('removing Observer', clickObserver)
-    clickObserver.abort()
+    const clickObserver = BingeStreamObservers.pop() as Observer;
+    console.log("removing Observer", clickObserver);
+    clickObserver.abort();
   }
-}
+};
 
 export const getUrlKey = (
   currentUrl: string,
   patternName: keyof typeof urlPatterns,
-): void | string => {
-  const patterns = urlPatterns[patternName]
+): undefined | string => {
+  const patterns = urlPatterns[patternName];
   for (const pattern of patterns) {
     if (minimatch(currentUrl, pattern)) {
-      return patternName
+      return patternName;
     }
   }
-}
+  return undefined;
+};
 
 export const getPatternNames = (): (string | null)[] => {
-  const patternNames = []
-  const sections = document.querySelectorAll('div[data-section-name]')
+  const patternNames = [];
+  const sections = document.querySelectorAll("div[data-section-name]");
   for (const section of sections) {
-    patternNames.push(section.getAttribute('data-section-name'))
+    patternNames.push(section.getAttribute("data-section-name"));
   }
-  return patternNames
-}
+  return patternNames;
+};
 
 export const manipulateOptionPage = (currentUrl: string) => {
-  if (currentUrl.startsWith('http')) {
-    document.querySelector('form')?.classList.add('page-action')
+  if (currentUrl.startsWith("http")) {
+    document.querySelector("form")?.classList.add("page-action");
   }
-  let urlKey
+  let urlKey: string | undefined;
   for (const patternName of getPatternNames()) {
-    const tmp = getUrlKey(currentUrl, patternName as keyof typeof urlPatterns)
+    const tmp = getUrlKey(currentUrl, patternName as keyof typeof urlPatterns);
     if (tmp !== undefined) {
-      urlKey = tmp
+      urlKey = tmp;
     }
   }
   if (urlKey === undefined) {
-    document.querySelector('form')?.classList.add('not-supported')
+    document.querySelector("form")?.classList.add("not-supported");
   } else {
-    const supportedSection = document.querySelector(`div[data-section-name="${urlKey}"]`)
-    supportedSection?.classList.add('current')
+    const supportedSection = document.querySelector(`div[data-section-name="${urlKey}"]`);
+    supportedSection?.classList.add("current");
   }
-}
+};

@@ -1,29 +1,29 @@
-const path = require('path')
-const SizePlugin = require('size-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+const path = require("node:path");
+const SizePlugin = require("size-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  devtool: 'source-map',
-  stats: 'errors-only',
+  devtool: "source-map",
+  stats: "errors-only",
   entry: {
     // target_path/target_file_name: full_source_path
-    'options/options': ['./source/options/options.ts', './source/options/options.scss'],
+    "options/options": ["./source/options/options.ts", "./source/options/options.scss"],
     // content scripts
-    'content_scripts/netflix': ['./source/content_scripts/netflix.ts'],
-    'content_scripts/amazon': ['./source/content_scripts/amazon.ts'],
-    'content_scripts/youtube': ['./source/content_scripts/youtube.ts'],
+    "content_scripts/netflix": ["./source/content_scripts/netflix.ts"],
+    "content_scripts/amazon": ["./source/content_scripts/amazon.ts"],
+    "content_scripts/youtube": ["./source/content_scripts/youtube.ts"],
   },
   output: {
-    path: path.join(__dirname, 'distribution'),
-    filename: '[name].js',
+    path: path.join(__dirname, "distribution"),
+    filename: "[name].js",
   },
   resolve: {
     // Add '.ts' and '.tsx' as a resolvable extension.
-    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.json'],
+    extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"],
     alias: {
-      'webextension-polyfill-ts': path.resolve(
-        path.join(__dirname, 'node_modules', 'webextension-polyfill-ts'),
+      "webextension-polyfill-ts": path.resolve(
+        path.join(__dirname, "node_modules", "webextension-polyfill-ts"),
       ),
     },
   },
@@ -32,9 +32,9 @@ module.exports = {
       // all files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: "ts-loader",
         options: {
-          configFile: 'tsconfig.json',
+          configFile: "tsconfig.json",
         },
         exclude: /node_modules/,
       },
@@ -42,15 +42,15 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name(resourcePath, resourceQuery) {
-                return resourcePath.replace(/.+source[\/\\]/, '').replace(/\.s[ac]ss$/i, '.css')
+              name(resourcePath, _resourceQuery) {
+                return resourcePath.replace(/.+source[/\\]/, "").replace(/\.s[ac]ss$/i, ".css");
               },
             },
           },
           // Compiles Sass to CSS
-          'sass-loader',
+          "sass-loader",
         ],
       },
     ],
@@ -60,10 +60,10 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: '**/*',
-          context: 'source',
+          from: "**/*",
+          context: "source",
           globOptions: {
-            ignore: ['**/*.js', '**/*.ts', '**/*.tsx', '**/*.scss'],
+            ignore: ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.scss"],
           },
         },
         // {
@@ -91,4 +91,4 @@ module.exports = {
       }),
     ],
   },
-}
+};
