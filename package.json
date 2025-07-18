@@ -52,7 +52,7 @@
     "terser-webpack-plugin": "^5.1.4",
     "ts-jest": "^29.4.0",
     "ts-loader": "^9.2.5",
-    "ts-node": "^10.2.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "web-ext": "^7.6.1",
     "web-ext-submit": "^7.2.0",
